@@ -7,7 +7,6 @@ import Member from "@/components/CardTeam";
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { TailSpin } from "react-loader-spinner";
-import { useMediaQuery } from "react-responsive";
 
 interface IUser {
   name: string;
@@ -63,7 +62,6 @@ const fetchRandomUser = async (count: number): Promise<IUser[]> => {
 const AboutUs: React.FunctionComponent = () => {
   const [users, setUsers] = useState<IUser[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -112,13 +110,9 @@ const AboutUs: React.FunctionComponent = () => {
           <p className="text-gray-300 mb-8">
             Our team of expert lawyers and paralegals.
           </p>
-          <div
-            className={`max-w-5xl mx-auto ${
-              isMobile ? "flex overflow-x-auto space-x-4 px-4" : ""
-            }`}
-          >
-            {isMobile ? (
-              users.map((member, index) => (
+          <div className="max-w-5xl mx-auto md:flex md:overflow-x-auto md:space-x-4 md:px-4">
+            <div className="flex overflow-x-auto space-x-4 px-4 md:hidden">
+              {users.map((member, index) => (
                 <div key={index} className="flex-shrink-0">
                   <Member
                     name={member.name}
@@ -128,15 +122,14 @@ const AboutUs: React.FunctionComponent = () => {
                     socialLinks={member.socialLinks}
                   />
                 </div>
-              ))
-            ) : (
-              <>
-                {getTeamRow(users.slice(0, 3))}
-                <div className="max-w-3xl mx-auto">
-                  {getTeamRow(users.slice(3))}
-                </div>
-              </>
-            )}
+              ))}
+            </div>
+            <div className="hidden md:block">
+              {getTeamRow(users.slice(0, 3))}
+              <div className="max-w-3xl mx-auto">
+                {getTeamRow(users.slice(3))}
+              </div>
+            </div>
           </div>
         </div>
         <FAQ />
