@@ -70,7 +70,7 @@ const Attorneys: React.FunctionComponent<IAttorneysProps> = (props) => {
         <p className="text-white mb-8 md:mb-20 pr-8 md:pr-0 pl-4">
           Meet our attorneys, a group of distinguished legal experts dedicated to
           delivering justice across a spectrum of specializations. They are the
-          cornerstone of our firm's success, ready to guide you with experience
+          cornerstone of our firm&apos;s success, ready to guide you with experience
           and expertise.
         </p>
         <div className="block md:flex flex-wrap gap-6 justify-center overflow-x-auto md:overflow-hidden scrollbar-none">
@@ -94,8 +94,8 @@ const Attorneys: React.FunctionComponent<IAttorneysProps> = (props) => {
             Are you a law graduate? Apply for an internship with us
           </h3>
           <p className="text-white mb-6 text-center md:text-left px-8 md:px-0">
-            If you're pursuing a career in law, consider our internship program.
-            It's a prime opportunity to gain valuable experience and learn from
+            If you&apos;re pursuing a career in law, consider our internship program.
+            It&apos;s a prime opportunity to gain valuable experience and learn from
             seasoned professionals in the field. Apply now to begin your journey
             in law.
           </p>

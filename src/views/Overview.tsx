@@ -27,17 +27,18 @@ const Overview: React.FunctionComponent<IOverviewProps> = (props) => {
             <div className="relative w-full h-[680px] pt-[56.25%] overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-[640px] bg-[url('/building.jpg')] bg-cover bg-center"></div>
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[rgba(9,36,21,0.8)] rounded-lg w-[400px] p-8 flex flex-col items-center justify-center border-2 border-[#b57630]">
-                <img
-                  src="/icon1.png"
-                  alt="Icon 1"
-                  className="mb-4"
-                />
+                <img src="/icon1.png" alt="Icon 1" className="mb-4" />
                 <h2 className="text-2xl text-white font-bold mb-4 text-center">
-                  Let's Win Your Case
+                  Let&apos;s Win Your Case
                 </h2>
                 <div className="w-[50px] h-[2px] bg-[#b57630] mb-4"></div>
                 <p className="mb-8 text-base text-center">
-                  Unlock your legal potential with our seasoned attorneys. We're not just about law; we're about your victory. With every case we take on, we bring a blend of grit, wit, and relentless dedication. We know the law, and we're here to make it work for you. Discover our unique approach to winning your case and see what sets us apart.
+                  Unlock your legal potential with our seasoned attorneys.
+                  We&apos;re not just about law; we&apos;re about your victory.
+                  With every case we take on, we bring a blend of grit, wit, and
+                  relentless dedication. We know the law, and we&apos;re here to
+                  make it work for you. Discover our unique approach to winning
+                  your case and see what sets us apart.
                 </p>
                 <button className="bg-transparent border-none text-[#b57630] underline font-bold p-0 cursor-pointer flex items-center">
                   <span className="text-base">Learn More About Us</span>
@@ -70,7 +71,11 @@ const Overview: React.FunctionComponent<IOverviewProps> = (props) => {
                 Experienced Attorneys
               </h3>
               <p className="text-white pl-4 md:pl-10">
-                Our team of attorneys brings a wealth of experience to the table. They're battle-tested, sharp-minded, and deeply committed to our clients' causes. Their profound legal expertise and proactive approach pave the way for success in even the most complex cases.
+                Our team of attorneys brings a wealth of experience to the
+                table. They&apos;re battle-tested, sharp-minded, and deeply committed
+                to our clients&apos; causes. Their profound legal expertise and
+                proactive approach pave the way for success in even the most
+                complex cases.
               </p>
             </div>
             <div className="mb-8 relative">
@@ -108,7 +113,11 @@ const Overview: React.FunctionComponent<IOverviewProps> = (props) => {
                 With You - From Start to Finish
               </h3>
               <p className="text-white pl-4 md:pl-10">
-                Our commitment extends beyond legal advice. We journey with you from the initial consultation until the final verdict, providing guidance, support, and insight every step of the way. We're not just your attorneys; we're your steadfast partners in the pursuit of justice.
+                Our commitment extends beyond legal advice. We journey with you
+                from the initial consultation until the final verdict, providing
+                guidance, support, and insight every step of the way. We&apos;re not
+                just your attorneys; we&apos;re your steadfast partners in the
+                pursuit of justice.
               </p>
             </div>
           </div>
