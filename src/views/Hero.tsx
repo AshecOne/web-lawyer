@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import Container from "@/components/Container";
 import { FaHandPointRight, FaArrowRight } from "react-icons/fa";
@@ -5,33 +6,92 @@ import { FaHandPointRight, FaArrowRight } from "react-icons/fa";
 interface IHeroProps {}
 
 const Hero: React.FunctionComponent<IHeroProps> = ({}) => {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== "undefined") {
+        setIsMobile(window.innerWidth < 768);
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      handleResize();
+      window.addEventListener("resize", handleResize);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, []);
+
   return (
     <section id="hero" className="bg-black">
       <div
-        style={{ backgroundImage: `url("/hero.jpg")` }}
-        className="relative flex items-center justify-end w-full bg-cover bg-center h-[720px] md:h-[500px]"
+        style={{
+          backgroundImage: `url(${isMobile ? "/hero2.jpg" : "/hero.jpg"})`,
+          height: isMobile ? "500px" : "720px",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        className="relative flex items-center justify-end w-full"
       >
         <Container>
           <div
-            className="absolute right-0 w-full md:w-1/2 md:transform md:translate-x-[-20%] bg-[rgba(9,36,21,0.8)] rounded-lg p-8 md:h-[300px] md:bottom-[60px] md:flex md:flex-col md:justify-start md:items-start sm:translate-y-[30%]"
+            className={`${
+              isMobile
+                ? "none"
+                : "absolute right-0 w-1/2 transform translateX(-20%)"
+            }`}
+            style={{
+              backgroundColor: "rgba(9, 36, 21, 0.8)",
+              borderRadius: "8px",
+              width: isMobile ? "100%" : "550px",
+              height: isMobile ? "auto" : "300px",
+              bottom: isMobile ? "none" : "60px",
+              transform: isMobile ? "translateY(30%)" : "none",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
+              padding: "2rem",
+            }}
           >
             <div className="flex items-center mb-6">
-              <h1 className="font-bold mr-4 text-white text-xl md:text-2xl">
+              <h1
+                className={`font-bold mr-4 text-white ${
+                  isMobile ? "text-xl" : "text-2xl"
+                }`}
+              >
                 Speedy Justice for You
               </h1>
-              <FaHandPointRight size={24} color="#b57630" className="hidden md:block" />
-              <FaHandPointRight size={20} color="#b57630" className="md:hidden" />
+              <FaHandPointRight size={isMobile ? 20 : 24} color="#b57630" />
             </div>
-            <div className="w-[30px] md:w-[50px] h-[2px] bg-[#b57630] mb-6"></div>
-            <p className="mb-8 text-white text-sm md:text-base">
-              Our law firm stands at the forefront of providing prompt, personalized legal solutions. Merging professionalism with accessibility, we navigate each client through their journey to justice, ensuring clarity and efficiency every step of the way.
+            <div
+              style={{
+                width: isMobile ? "30px" : "50px",
+                height: "2px",
+                backgroundColor: "#b57630",
+                marginBottom: "1.5rem",
+              }}
+            ></div>
+            <p
+              className={`mb-8 text-white ${
+                isMobile ? "text-sm" : "text-base"
+              }`}
+            >
+              {`Our law firm stands at the forefront of providing prompt, personalized legal solutions. Merging professionalism with accessibility, we navigate each client through their journey to justice, ensuring clarity and efficiency every step of the way.`}
             </p>
             <button className="bg-transparent border-none text-white underline font-bold p-0 cursor-pointer flex items-center">
-              <a className="text-sm md:text-base" href="/teams">
+              <a className={isMobile ? "text-sm" : "text-base"} href="/teams">
                 Contact Our Attorneys
               </a>
-              <FaArrowRight size={12} className="ml-1 md:hidden" />
-              <FaArrowRight size={16} className="ml-1 hidden md:block" />
+              <FaArrowRight
+                size={isMobile ? 12 : 16}
+                style={{ marginLeft: "5px" }}
+              />
             </button>
           </div>
         </Container>

@@ -10,6 +10,7 @@ interface HoverState {
 }
 
 const Overview: React.FunctionComponent<IOverviewProps> = (props) => {
+  const [isMobile, setIsMobile] = React.useState(false);
   const [isHovered, setIsHovered] = React.useState<{ [key: string]: boolean }>(
     {}
   );
@@ -19,79 +20,248 @@ const Overview: React.FunctionComponent<IOverviewProps> = (props) => {
   const handleMouseLeave = (id: string) =>
     setIsHovered({ ...isHovered, [id]: false });
 
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== "undefined") {
+        setIsMobile(window.innerWidth < 768);
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      handleResize();
+      window.addEventListener("resize", handleResize);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, []);
+
   return (
-    <section id="overview" className="bg-[#092415] text-white">
+    <section
+      id="overview"
+      style={{ backgroundColor: "#092415", color: "white" }}
+    >
       <Container>
-        <div className="flex flex-col md:flex-row">
-          <div className="hidden md:block md:w-1/2 relative">
-            <div className="relative w-full h-[680px] pt-[56.25%] overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-[640px] bg-[url('/building.jpg')] bg-cover bg-center"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[rgba(9,36,21,0.8)] rounded-lg w-[400px] p-8 flex flex-col items-center justify-center border-2 border-[#b57630]">
-                <img src="/icon1.png" alt="Icon 1" className="mb-4" />
-                <h2 className="text-2xl text-white font-bold mb-4 text-center">
-                  Let&apos;s Win Your Case
-                </h2>
-                <div className="w-[50px] h-[2px] bg-[#b57630] mb-4"></div>
-                <p className="mb-8 text-base text-center">
-                  Unlock your legal potential with our seasoned attorneys.
-                  We&apos;re not just about law; we&apos;re about your victory.
-                  With every case we take on, we bring a blend of grit, wit, and
-                  relentless dedication. We know the law, and we&apos;re here to
-                  make it work for you. Discover our unique approach to winning
-                  your case and see what sets us apart.
-                </p>
-                <button className="bg-transparent border-none text-[#b57630] underline font-bold p-0 cursor-pointer flex items-center">
-                  <span className="text-base">Learn More About Us</span>
-                  <FaArrowRight size={16} className="ml-2" />
-                </button>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+          }}
+        >
+          {!isMobile && (
+            <div style={{ width: "50%", position: "relative" }}>
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  height: "680px",
+                  paddingTop: "56.25%",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "640px",
+                    backgroundImage: "url('/building.jpg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                ></div>
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    backgroundColor: "rgba(9, 36, 21, 0.8)",
+                    borderRadius: "8px",
+                    width: "400px",
+                    padding: "2rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: "2px solid #b57630",
+                  }}
+                >
+                  <img
+                    src="/icon1.png"
+                    alt="Icon 1"
+                    style={{ marginBottom: "1rem" }}
+                  />
+                  <h2
+                    style={{
+                      fontSize: "1.5rem",
+                      color: "#fff",
+                      fontWeight: "bold",
+                      marginBottom: "1rem",
+                      textAlign: "center",
+                    }}
+                  >
+                    {"Let's Win Your Case"}
+                  </h2>
+                  <div
+                    style={{
+                      width: "50px",
+                      height: "2px",
+                      backgroundColor: "#b57630",
+                      marginBottom: "1rem",
+                    }}
+                  ></div>
+                  <p
+                    style={{
+                      marginBottom: "2rem",
+                      fontSize: "1rem",
+                      textAlign: "center",
+                    }}
+                  >
+                    {`Unlock your legal potential with our seasoned attorneys. We're not just about law; we're about your victory. With every case we take on, we bring a blend of grit, wit, and relentless dedication. We know the law, and we're here to make it work for you. Discover our unique approach to winning your case and see what sets us apart.`}
+                  </p>
+                  <button
+                    style={{
+                      backgroundColor: "transparent",
+                      border: "none",
+                      color: "#b57630",
+                      textDecoration: "underline",
+                      fontWeight: "bold",
+                      padding: 0,
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span style={{ fontSize: "1rem" }}>
+                      Learn More About Us
+                    </span>
+                    <FaArrowRight size={16} style={{ marginLeft: "0.5rem" }} />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="w-full md:w-1/2 md:p-8 pt-12 pb-12 md:pt-0 md:pb-0 relative z-10">
-            <h2 className="text-2xl text-white font-bold mb-8 border-l-4 border-[#b57630] pl-4 mt-0 md:mt-8">
+          )}
+          <div
+            style={{
+              width: isMobile ? "100%" : "50%",
+              padding: isMobile ? "0" : "2rem",
+              paddingTop: isMobile ? "3rem" : "0",
+              paddingBottom: isMobile ? "3rem" : "0",
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "1.5rem",
+                color: "white",
+                fontWeight: "bold",
+                marginBottom: "2rem",
+                borderLeft: "4px solid #b57630",
+                paddingLeft: "1rem",
+                marginTop: isMobile ? "0" : "2rem",
+              }}
+            >
               Why Choose Our Legal Services
             </h2>
-            <p className="text-white mb-8 md:mb-8 pl-4">
+            <p
+              className="text-white"
+              style={{
+                marginBottom: isMobile ? "2rem" : "2rem",
+                paddingLeft: "1rem",
+              }}
+            >
               Choosing our legal services means entrusting your case to a team
               renowned for precision, dedication, and a personalized approach
               that targets your specific legal goals with clarity and
               effectiveness.
             </p>
-            <div className="mb-8 relative">
+            <div style={{ marginBottom: "2rem", position: "relative" }}>
               <img
                 src="/icon3.png"
                 alt="Icon 1"
                 onMouseEnter={() => handleMouseEnter("icon1")}
                 onMouseLeave={() => handleMouseLeave("icon1")}
-                className={`md:absolute md:left-[-70px] md:top-[10%] md:mr-0 z-20 transition-transform duration-300 ease-in-out ${
-                  isHovered["icon1"] ? "md:scale-110" : ""
-                }`}
+                style={{
+                  position: isMobile ? "static" : "absolute",
+                  left: isMobile ? "0" : "-70px",
+                  top: isMobile ? "0" : "10%",
+                  transform: isMobile
+                    ? "none"
+                    : isHovered["icon1"]
+                    ? "scale(1.1)"
+                    : "none",
+                  marginRight: isMobile ? "0.5rem" : "0",
+                  zIndex: 2,
+                  transition: "transform 0.3s ease",
+                }}
               />
-              <h3 className="text-xl text-[#b57630] font-bold mb-2 pl-4 md:pl-10 flex items-center md:block">
+              <h3
+                style={{
+                  fontSize: "1.25rem",
+                  color: "#b57630",
+                  fontWeight: "bold",
+                  marginBottom: "0.5rem",
+                  paddingLeft: isMobile ? "1rem" : "40px",
+                  display: isMobile ? "flex" : "block",
+                  alignItems: isMobile ? "center" : "flex-start",
+                }}
+              >
                 Experienced Attorneys
               </h3>
-              <p className="text-white pl-4 md:pl-10">
-                Our team of attorneys brings a wealth of experience to the
-                table. They&apos;re battle-tested, sharp-minded, and deeply committed
-                to our clients&apos; causes. Their profound legal expertise and
-                proactive approach pave the way for success in even the most
-                complex cases.
+              <p
+                style={{
+                  color: "white",
+                  paddingLeft: isMobile ? "1rem" : "40px",
+                }}
+              >
+                {`Our team of attorneys brings a wealth of experience to the table. They're battle-tested, sharp-minded, and deeply committed to our clients' causes. Their profound legal expertise and proactive approach pave the way for success in even the most complex cases."`}
               </p>
             </div>
-            <div className="mb-8 relative">
+            <div style={{ marginBottom: "2rem", position: "relative" }}>
               <img
                 src="/icon2.png"
                 alt="Icon 2"
                 onMouseEnter={() => handleMouseEnter("icon2")}
                 onMouseLeave={() => handleMouseLeave("icon2")}
-                className={`md:absolute md:left-[-60px] md:top-0 md:mr-0 z-20 transition-transform duration-300 ease-in-out ${
-                  isHovered["icon2"] ? "md:scale-110" : ""
-                }`}
+                style={{
+                  position: isMobile ? "relative" : "absolute",
+                  left: isMobile ? "10px" : "-60px",
+                  top: isMobile ? "0" : "0",
+                  transform: isMobile
+                    ? "none"
+                    : isHovered["icon2"]
+                    ? "scale(1.1)"
+                    : "none",
+                  marginRight: isMobile ? "0.5rem" : "0",
+                  zIndex: 2,
+                  transition: "transform 0.3s ease",
+                }}
               />
-              <h3 className="text-xl text-[#b57630] font-bold mb-2 pl-4 md:pl-10 flex items-center md:block">
+              <h3
+                style={{
+                  fontSize: "1.25rem",
+                  color: "#b57630",
+                  fontWeight: "bold",
+                  marginBottom: "0.5rem",
+                  paddingLeft: isMobile ? "1rem" : "40px",
+                  display: isMobile ? "flex" : "block",
+                  alignItems: isMobile ? "center" : "flex-start",
+                }}
+              >
                 Best Case Strategies
               </h3>
-              <p className="text-white pl-4 md:pl-10">
+              <p
+                style={{
+                  color: "white",
+                  paddingLeft: isMobile ? "1rem" : "40px",
+                }}
+              >
                 We approach each case with a tailor-made strategy, combining
                 thorough research, innovative tactics, and deep legal acumen.
                 Our strategies are designed to position your case in the best
@@ -99,25 +269,46 @@ const Overview: React.FunctionComponent<IOverviewProps> = (props) => {
                 setting.
               </p>
             </div>
-            <div className="relative">
+            <div style={{ position: "relative" }}>
               <img
                 src="/icon.png"
                 alt="Icon 3"
                 onMouseEnter={() => handleMouseEnter("icon3")}
                 onMouseLeave={() => handleMouseLeave("icon3")}
-                className={`md:absolute md:left-[-60px] md:top-0 md:mr-0 z-20 transition-transform duration-300 ease-in-out ${
-                  isHovered["icon3"] ? "md:scale-110" : ""
-                }`}
+                style={{
+                  position: isMobile ? "relative" : "absolute",
+                  left: isMobile ? "10px" : "-60px",
+                  top: isMobile ? "0" : "0",
+                  transform: isMobile
+                    ? "none"
+                    : isHovered["icon3"]
+                    ? "scale(1.1)"
+                    : "none",
+                  marginRight: isMobile ? "0.5rem" : "0",
+                  zIndex: 2,
+                  transition: "transform 0.3s ease",
+                }}
               />
-              <h3 className="text-xl text-[#b57630] font-bold mb-2 pl-4 md:pl-10 flex items-center md:block">
+              <h3
+                style={{
+                  fontSize: "1.25rem",
+                  color: "#b57630",
+                  fontWeight: "bold",
+                  marginBottom: "0.5rem",
+                  paddingLeft: isMobile ? "1rem" : "40px",
+                  display: isMobile ? "flex" : "block",
+                  alignItems: isMobile ? "center" : "flex-start",
+                }}
+              >
                 With You - From Start to Finish
               </h3>
-              <p className="text-white pl-4 md:pl-10">
-                Our commitment extends beyond legal advice. We journey with you
-                from the initial consultation until the final verdict, providing
-                guidance, support, and insight every step of the way. We&apos;re not
-                just your attorneys; we&apos;re your steadfast partners in the
-                pursuit of justice.
+              <p
+                style={{
+                  color: "white",
+                  paddingLeft: isMobile ? "1rem" : "40px",
+                }}
+              >
+                {`Our commitment extends beyond legal advice. We journey with you from the initial consultation until the final verdict, providing guidance, support, and insight every step of the way. We're not just your attorneys; we're your steadfast partners in the pursuit of justice.`}
               </p>
             </div>
           </div>

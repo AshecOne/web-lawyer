@@ -62,6 +62,7 @@ const fetchRandomUser = async (count: number): Promise<IUser[]> => {
 const AboutUs: React.FunctionComponent = () => {
   const [users, setUsers] = useState<IUser[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,6 +72,23 @@ const AboutUs: React.FunctionComponent = () => {
       setIsLoading(false);
     };
     fetchData();
+
+    const handleResize = () => {
+      if (typeof window !== "undefined") {
+        setIsMobile(window.innerWidth < 768);
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      handleResize();
+      window.addEventListener("resize", handleResize);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
   }, []);
 
   if (isLoading) {
@@ -110,9 +128,13 @@ const AboutUs: React.FunctionComponent = () => {
           <p className="text-gray-300 mb-8">
             Our team of expert lawyers and paralegals.
           </p>
-          <div className="max-w-5xl mx-auto md:flex md:overflow-x-auto md:space-x-4 md:px-4">
-            <div className="flex overflow-x-auto space-x-4 px-4 md:hidden">
-              {users.map((member, index) => (
+          <div
+            className={`max-w-5xl mx-auto ${
+              isMobile ? "flex overflow-x-auto space-x-4 px-4" : ""
+            }`}
+          >
+            {isMobile ? (
+              users.map((member, index) => (
                 <div key={index} className="flex-shrink-0">
                   <Member
                     name={member.name}
@@ -122,14 +144,15 @@ const AboutUs: React.FunctionComponent = () => {
                     socialLinks={member.socialLinks}
                   />
                 </div>
-              ))}
-            </div>
-            <div className="hidden md:block">
-              {getTeamRow(users.slice(0, 3))}
-              <div className="max-w-3xl mx-auto">
-                {getTeamRow(users.slice(3))}
-              </div>
-            </div>
+              ))
+            ) : (
+              <>
+                {getTeamRow(users.slice(0, 3))}
+                <div className="max-w-3xl mx-auto">
+                  {getTeamRow(users.slice(3))}
+                </div>
+              </>
+            )}
           </div>
         </div>
         <FAQ />

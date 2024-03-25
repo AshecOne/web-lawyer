@@ -6,11 +6,35 @@ import Member from "@/components/CardTeam";
 interface IAttorneysProps {}
 
 const Attorneys: React.FunctionComponent<IAttorneysProps> = (props) => {
+  const [isMobile, setIsMobile] = React.useState(false);
   const [isHovered, setIsHovered] = React.useState(false);
 
   const buttonStyle: React.CSSProperties = {
     backgroundColor: isHovered ? "#b57630" : "#6a411c",
   };
+
+  const textAlignStyle: React.CSSProperties = {
+    textAlign: isMobile ? "center" : "left",
+  };
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== "undefined") {
+        setIsMobile(window.innerWidth < 768);
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      handleResize();
+      window.addEventListener("resize", handleResize);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, []);
 
   const membersData = [
     {
@@ -62,19 +86,59 @@ const Attorneys: React.FunctionComponent<IAttorneysProps> = (props) => {
   ];
 
   return (
-    <section id="attorneys" className="bg-[#166432] py-2 pb-12">
+    <section
+      id="attorneys"
+      style={{
+        backgroundColor: "#166432",
+        padding: "0.5rem 0",
+        paddingBottom: "3rem",
+      }}
+    >
       <Container>
-        <h2 className="text-2xl text-white font-bold mb-8 border-l-4 border-[#b57630] pl-4 mt-8 md:mt-16">
+        <h2
+          style={{
+            fontSize: "1.5rem",
+            color: "white",
+            fontWeight: "bold",
+            marginBottom: "2rem",
+            borderLeft: "4px solid #b57630",
+            paddingLeft: "1rem",
+            marginTop: isMobile ? "2rem" : "4rem",
+          }}
+        >
           Dedicated Team of Attorneys
         </h2>
-        <p className="text-white mb-8 md:mb-20 pr-8 md:pr-0 pl-4">
-          Meet our attorneys, a group of distinguished legal experts dedicated to
-          delivering justice across a spectrum of specializations. They are the
-          cornerstone of our firm&apos;s success, ready to guide you with experience
-          and expertise.
+        <p
+          style={{
+            color: "white",
+            marginBottom: isMobile ? "2rem" : "5rem",
+            paddingRight: isMobile ? "2rem" : "none",
+            paddingLeft: "1rem",
+          }}
+        >
+          {`Meet our attorneys, a group of distinguished legal experts dedicated
+          to delivering justice across a spectrum of specializations. They are
+          the cornerstone of our firm's success, ready to guide you with
+          experience and expertise.`}
         </p>
-        <div className="block md:flex flex-wrap gap-6 justify-center overflow-x-auto md:overflow-hidden scrollbar-none">
-          <div className="flex w-max md:w-full gap-4 md:gap-6 pl-8 md:pl-0">
+        <div
+          style={{
+            display: isMobile ? "block" : "flex",
+            flexWrap: "wrap",
+            gap: "1.5rem",
+            justifyContent: "center",
+            overflowX: isMobile ? "scroll" : "hidden",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              width: isMobile ? "max-content" : "100%",
+              gap: isMobile ? "1rem" : "1.5rem",
+              paddingLeft: isMobile ? "2rem" : "none",
+            }}
+          >
             {membersData.map((member, index) => (
               <Member
                 key={index}
@@ -85,24 +149,52 @@ const Attorneys: React.FunctionComponent<IAttorneysProps> = (props) => {
                 socialLinks={member.socialLinks}
               />
             ))}
-            <div className="pr-8 md:pr-0" />
+            <div style={{ paddingRight: isMobile ? "2rem" : "0" }} />
           </div>
         </div>
-        <hr className="border-t border-[#b57630] my-8" />
-        <div className="text-center md:text-left">
-          <h3 className="text-white text-xl font-semibold mb-4 text-center md:text-left">
+        <hr style={{ borderTop: "1px solid #b57630", margin: "2rem 0" }} />
+        <div style={textAlignStyle}>
+          <h3
+            style={{
+              color: "white",
+              fontSize: "1.25rem",
+              fontWeight: 600,
+              marginBottom: "1rem",
+              textAlign: isMobile ? "center" : "left",
+            }}
+          >
             Are you a law graduate? Apply for an internship with us
           </h3>
-          <p className="text-white mb-6 text-center md:text-left px-8 md:px-0">
-            If you&apos;re pursuing a career in law, consider our internship program.
-            It&apos;s a prime opportunity to gain valuable experience and learn from
-            seasoned professionals in the field. Apply now to begin your journey
-            in law.
+          <p
+            style={{
+              color: "white",
+              marginBottom: "1.5rem",
+              textAlign: isMobile ? "center" : "left",
+              paddingLeft: isMobile ? "2rem" : "none",
+              paddingRight: isMobile ? "2rem" : "none",
+            }}
+          >
+            If you&apos;re pursuing a career in law, consider our internship
+            program. It&apos;s a prime opportunity to gain valuable experience
+            and learn from seasoned professionals in the field. Apply now to
+            begin your journey in law.
           </p>
-          <div className="flex justify-center md:justify-start mb-0 md:mb-8">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: isMobile ? "center" : "none",
+              marginBottom: isMobile ? "0" : "2rem",
+            }}
+          >
             <button
-              style={buttonStyle}
-              className="text-white px-2 py-2 mt-5 rounded-md transition duration-300"
+              style={{
+                ...buttonStyle,
+                color: "white",
+                padding: "0.5rem 0.5rem",
+                marginTop: "1.25rem",
+                borderRadius: "0.375rem",
+                transition: "background-color 0.3s",
+              }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
