@@ -46,7 +46,7 @@ const Services: React.FunctionComponent<IServicesProps> = (props) => {
     <section id="services" className="bg-[#166432] pt-5">
       <Container>
         <div className="mb-8 text-center px-4 lg:px-0">
-          <h2 className="text-3xl md:text-6xl font-bold mb-2">
+          <h2 className="text-3xl md:text-6xl font-bold mb-2 text-white">
             Our Practice Areas
           </h2>
           <p className="text-white">

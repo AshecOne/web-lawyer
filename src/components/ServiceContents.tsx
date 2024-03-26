@@ -31,8 +31,8 @@ const ServiceContents: React.FunctionComponent<IServiceContentsProps> = ({
       image: "/civil.png",
       content: (
         <div>
-          <h2 className="text-3xl mb-2">Civil Rights Law</h2>
-          <p>
+          <h2 className="text-3xl mb-2 text-white">Civil Rights Law</h2>
+          <p className="text-white">
             Our experienced civil rights attorneys fight for equality and
             justice. We handle cases involving discrimination, police
             misconduct, and more.
@@ -44,8 +44,8 @@ const ServiceContents: React.FunctionComponent<IServiceContentsProps> = ({
       image: "/business.png",
       content: (
         <div>
-          <h2 className="text-3xl mb-2">Business Law</h2>
-          <p>
+          <h2 className="text-3xl mb-2 text-white">Business Law</h2>
+          <p className="text-white">
             We provide comprehensive legal services for businesses, including
             formation, contracts, mergers and acquisitions, and dispute
             resolution.
@@ -57,8 +57,8 @@ const ServiceContents: React.FunctionComponent<IServiceContentsProps> = ({
       image: "/insurance.png",
       content: (
         <div>
-          <h2 className="text-3xl mb-2">Insurance Law</h2>
-          <p>
+          <h2 className="text-3xl mb-2 text-white">Insurance Law</h2>
+          <p className="text-white">
             {`Our insurance law team assists with coverage disputes, bad faith
             claims, and complex insurance litigation to protect our clients'
             interests.`}
@@ -70,8 +70,8 @@ const ServiceContents: React.FunctionComponent<IServiceContentsProps> = ({
       image: "/criminal.png",
       content: (
         <div>
-          <h2 className="text-3xl mb-2">Criminal Law</h2>
-          <p>
+          <h2 className="text-3xl mb-2 text-white">Criminal Law</h2>
+          <p className="text-white">
             If you face criminal charges, our skilled defense attorneys will
             fight for your rights and freedom. We handle a wide range of
             criminal cases.
@@ -83,8 +83,8 @@ const ServiceContents: React.FunctionComponent<IServiceContentsProps> = ({
       image: "/employment.png",
       content: (
         <div>
-          <h2 className="text-3xl mb-2">Employment Law</h2>
-          <p>
+          <h2 className="text-3xl mb-2 text-white">Employment Law</h2>
+          <p className="text-white">
             We represent employees and employers in various employment law
             matters, including discrimination, harassment, wrongful termination,
             and more.
@@ -97,8 +97,8 @@ const ServiceContents: React.FunctionComponent<IServiceContentsProps> = ({
       image: "/elder.png",
       content: (
         <div>
-          <h2 className="text-3xl mb-2">Elder Law</h2>
-          <p>
+          <h2 className="text-3xl mb-2 text-white">Elder Law</h2>
+          <p className="text-white">
             {`Our elder law attorneys assist with estate planning, long-term care,
             Medicaid planning, guardianships, and protecting seniors' rights.`}
           </p>
@@ -109,8 +109,8 @@ const ServiceContents: React.FunctionComponent<IServiceContentsProps> = ({
       image: "/financial.png",
       content: (
         <div>
-          <h2 className="text-3xl mb-2">Financial Law</h2>
-          <p>
+          <h2 className="text-3xl mb-2 text-white">Financial Law</h2>
+          <p className="text-white">
             We provide legal guidance for financial transactions, regulatory
             compliance, and litigation in the financial sector.
           </p>
@@ -121,8 +121,8 @@ const ServiceContents: React.FunctionComponent<IServiceContentsProps> = ({
       image: "/corporate.png",
       content: (
         <div>
-          <h2 className="text-3xl mb-2">Corporate Law</h2>
-          <p>
+          <h2 className="text-3xl mb-2 text-white">Corporate Law</h2>
+          <p className="text-white">
             Our corporate law team advises on entity formation, corporate
             governance, mergers and acquisitions, and other corporate legal
             matters.
@@ -134,8 +134,8 @@ const ServiceContents: React.FunctionComponent<IServiceContentsProps> = ({
       image: "/property.png",
       content: (
         <div>
-          <h2 className="text-3xl mb-2">Property Law</h2>
-          <p>
+          <h2 className="text-3xl mb-2 text-white">Property Law</h2>
+          <p className="text-white">
             We handle a wide range of property law matters, including real
             estate transactions, landlord-tenant disputes, and property
             litigation.
@@ -159,7 +159,7 @@ const ServiceContents: React.FunctionComponent<IServiceContentsProps> = ({
           />
         </div>
         <div className="w-11/12">
-          {activeContent.content}{" "}
+          {activeContent.content}
           <div className="mt-8">
             <button className="bg-[#6a411c] hover:bg-[#b57630] text-white font-bold py-2 px-4 rounded">
               Learn More
