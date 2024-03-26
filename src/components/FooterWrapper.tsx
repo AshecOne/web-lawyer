@@ -14,7 +14,7 @@ const FooterWrapper: FC = (props) => {
   }, []);
 
   if (!Footer) {
-    return <div>Loading...</div>; 
+    return <div></div>; 
   }
 
   const FooterElement = Footer as React.ComponentType;

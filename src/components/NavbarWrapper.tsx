@@ -14,7 +14,7 @@ const NavbarWrapper: FC = (props) => {
   }, []);
 
   if (!Navbar) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   const NavbarElement = Navbar as React.ComponentType;
