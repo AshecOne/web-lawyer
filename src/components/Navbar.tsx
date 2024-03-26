@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import * as React from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface INavbarProps {}
 
@@ -20,7 +21,9 @@ const Navbar: React.FunctionComponent<INavbarProps> = (props) => {
       <div className="bg-black text-white py-2">
         <Container>
           <div className="flex justify-between items-center">
-            <span className="hidden sm:block text-white">CALL US: (+62) 851-5672-0292</span>
+            <span className="hidden sm:block text-white">
+              CALL US: (+62) 851-5672-0292
+            </span>
             <div className="flex space-x-4 justify-center sm:justify-end w-full sm:w-auto">
               <a
                 href="https://twitter.com/itsSaulGoodman?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
@@ -54,10 +57,12 @@ const Navbar: React.FunctionComponent<INavbarProps> = (props) => {
       <div className="bg-[#092415]">
         <Container>
           <div className="flex justify-between items-center py-4 sm:px-0 px-4">
-            <img
+            <Image
+              width={128}
+              height={96}
               src="/logo.png"
               alt="Lawyer Logo"
-              className="h-24 w-32 cursor-pointer transition duration-300 ease-in-out transform hover:scale-110"
+              className="cursor-pointer transition duration-300 ease-in-out transform hover:scale-110"
               onClick={() => router.push("/")}
             />
             <div className="ml-auto space-x-6 hidden md:flex">

@@ -1,4 +1,5 @@
 import * as React from "react";
+import Image from "next/image";
 
 interface ICultureProps {}
 
@@ -14,10 +15,12 @@ const Culture: React.FunctionComponent<ICultureProps> = (props) => {
       <div className="md:w-1/2">
         <div className="flex md:flex-none flex-col md:grid md:grid-cols-2 md:gap-8">
           <div className="bg-white rounded-lg shadow-lg p-6 text-black mb-4 md:mb-0">
-            <img
+            <Image
+              width={48}
+              height={48}
               src="/give.png"
               alt="Collaboration Icon"
-              className="w-12 h-12 mb-4"
+              className="mb-4"
             />
             <h3 className="text-xl font-bold mb-2">Collaboration</h3>
             <p>
@@ -27,10 +30,12 @@ const Culture: React.FunctionComponent<ICultureProps> = (props) => {
             </p>
           </div>
           <div className="bg-white rounded-lg shadow-lg p-6 text-black mb-4 md:mb-0">
-            <img
+            <Image
+              width={48}
+              height={48}
               src="/teamwork.png"
               alt="Integrity Icon"
-              className="w-12 h-12 mb-4"
+              className="mb-4"
             />
             <h3 className="text-xl font-bold mb-2">Integrity</h3>
             <p>
@@ -40,10 +45,12 @@ const Culture: React.FunctionComponent<ICultureProps> = (props) => {
             </p>
           </div>
           <div className="bg-white rounded-lg shadow-lg p-6 text-black mb-4 md:mb-0">
-            <img
+            <Image
+              width={48}
+              height={48}
               src="/target.png"
               alt="Excellence Icon"
-              className="w-12 h-12 mb-4"
+              className="mb-4"
             />
             <h3 className="text-xl font-bold mb-2">Excellence</h3>
             <p>
@@ -53,10 +60,12 @@ const Culture: React.FunctionComponent<ICultureProps> = (props) => {
             </p>
           </div>
           <div className="bg-white rounded-lg shadow-lg p-6 text-black mb-4 md:mb-0">
-            <img
+            <Image
+              width={48}
+              height={48}
               src="/stats.png"
               alt="Diversity and Inclusion Icon"
-              className="w-12 h-12 mb-4"
+              className="mb-4"
             />
             <h3 className="text-xl font-bold mb-2">Diversity and Inclusion</h3>
             <p>

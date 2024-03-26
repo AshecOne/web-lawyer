@@ -1,4 +1,5 @@
 import * as React from "react";
+import Image from "next/image";
 
 interface IServiceContentsProps {
   activePracticeArea: PracticeArea;
@@ -150,10 +151,11 @@ const ServiceContents: React.FunctionComponent<IServiceContentsProps> = ({
     <div className="flex flex-col h-full">
       <div className="flex-grow flex">
         <div className="w-[100px] pr-8">
-          <img
+          <Image
+            width={62}
+            height={64}
             src={activeContent.image}
             alt={activePracticeArea}
-            className="w-16 h-16"
           />
         </div>
         <div className="w-11/12">

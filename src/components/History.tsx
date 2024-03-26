@@ -1,4 +1,5 @@
 import * as React from "react";
+import Image from "next/image";
 
 interface IHistoryProps {}
 
@@ -36,10 +37,12 @@ const History: React.FunctionComponent<IHistoryProps> = (props) => {
               </p>
             </div>
             <div className="w-full md:w-1/2">
-              <img
+              <Image
+                width={620}
+                height={413}
                 src="/office.webp"
                 alt="Law Firm"
-                className="w-full h-auto mb-4 md:mb-0"
+                className="mb-4 md:mb-0"
               />
             </div>
           </div>

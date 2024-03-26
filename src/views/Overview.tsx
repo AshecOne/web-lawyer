@@ -2,6 +2,7 @@
 import * as React from "react";
 import Container from "@/components/Container";
 import { FaArrowRight, FaHandPointRight } from "react-icons/fa";
+import Image from "next/image";
 
 interface IOverviewProps {}
 
@@ -91,10 +92,12 @@ const Overview: React.FunctionComponent<IOverviewProps> = (props) => {
                     border: "2px solid #b57630",
                   }}
                 >
-                  <img
+                  <Image
                     src="/icon1.png"
                     alt="Icon 1"
                     style={{ marginBottom: "1rem" }}
+                    width={77}
+                    height={87}
                   />
                   <h2
                     style={{
@@ -182,7 +185,9 @@ const Overview: React.FunctionComponent<IOverviewProps> = (props) => {
               effectiveness.
             </p>
             <div style={{ marginBottom: "2rem", position: "relative" }}>
-              <img
+              <Image
+                width={90}
+                height={80}
                 src="/icon3.png"
                 alt="Icon 1"
                 onMouseEnter={() => handleMouseEnter("icon1")}
@@ -224,7 +229,9 @@ const Overview: React.FunctionComponent<IOverviewProps> = (props) => {
               </p>
             </div>
             <div style={{ marginBottom: "2rem", position: "relative" }}>
-              <img
+              <Image
+                width={83}
+                height={92}
                 src="/icon2.png"
                 alt="Icon 2"
                 onMouseEnter={() => handleMouseEnter("icon2")}
@@ -270,7 +277,9 @@ const Overview: React.FunctionComponent<IOverviewProps> = (props) => {
               </p>
             </div>
             <div style={{ position: "relative" }}>
-              <img
+              <Image
+                width={87}
+                height={90}
                 src="/icon.png"
                 alt="Icon 3"
                 onMouseEnter={() => handleMouseEnter("icon3")}
