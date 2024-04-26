@@ -28,7 +28,7 @@ const Hero: React.FunctionComponent<IHeroProps> = ({}) => {
   }, []);
 
   return (
-    <section id="hero" className="bg-black">
+    <section id="hero" className="bg-black block lg:block md:hidden">
       <div
         style={{
           backgroundImage: `url(${isMobile ? "/hero2.jpg" : "/hero.jpg"})`,

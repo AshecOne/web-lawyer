@@ -41,7 +41,7 @@ const Consultation: React.FunctionComponent<IConsultationProps> = (props) => {
       style={{
         backgroundColor: "#166432",
       }}
-      className="py-12"
+      className="block lg:block md:hidden py-12"
     >
       <Container>
         <div className="" style={{ backgroundColor: "#166432" }}>

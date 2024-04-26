@@ -52,7 +52,7 @@ const Teams: React.FunctionComponent<ITeamsProps> = (props) => {
   "Adept in the courtroom, our Litigation Attorney strategizes to defend your interests, combining meticulous preparation and superior advocacy to represent clients in civil disputes."
   ];
   return (
-    <section id="teams" className="bg-[#166432]">
+    <section id="teams" className="block lg:block md:hidden bg-[#166432]">
       <Container>
         <div className="text-center px-4 lg:px-0 pt-5">
           <h2 className="text-3xl md:text-6xl font-bold text-white">Our Team</h2>

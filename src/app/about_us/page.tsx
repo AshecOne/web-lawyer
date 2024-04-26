@@ -117,7 +117,7 @@ const AboutUs: React.FunctionComponent = () => {
   };
 
   return (
-    <section id="about_us" className="bg-[#166432] pt-5 text-white">
+    <section id="about_us" className="bg-[#166432] block lg:block md:hidden pt-5 text-white">
       <Container>
         <History />
         <div className="flex items-center justify-center py-10 md:py-20">

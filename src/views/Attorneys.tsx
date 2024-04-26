@@ -93,6 +93,7 @@ const Attorneys: React.FunctionComponent<IAttorneysProps> = (props) => {
         padding: "0.5rem 0",
         paddingBottom: "3rem",
       }}
+      className="block lg:block md:hidden"
     >
       <Container>
         <h2

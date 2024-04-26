@@ -17,7 +17,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
     textAlign: "max-md" ? "center" : "left",
   } as React.CSSProperties;
   return (
-    <footer>
+    <footer className="block lg:block md:hidden">
       <section className="bg-[#092415] text-white py-12">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

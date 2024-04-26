@@ -35,6 +35,7 @@ const Practice: React.FunctionComponent<IPracticeProps> = (props) => {
         paddingTop: isMobile ? "3rem" : "4rem",
         paddingBottom: isMobile ? "3rem" : "4rem",
       }}
+      className="block lg:block md:hidden"
     >
       <Container>
         <div style={{ marginBottom: "3rem" }}>

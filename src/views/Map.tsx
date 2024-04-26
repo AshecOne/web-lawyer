@@ -7,7 +7,7 @@ const Map: React.FunctionComponent<IMapProps> = (props) => {
   return (
     <section
       id="map"
-      className="bg-[#092415]"
+      className="bg-[#092415] block lg:block md:hidden"
       style={{ paddingTop: "80px", paddingBottom: "80px" }}
     >
       <Container>

@@ -44,6 +44,7 @@ const Overview: React.FunctionComponent<IOverviewProps> = (props) => {
     <section
       id="overview"
       style={{ backgroundColor: "#092415", color: "white" }}
+      className="block lg:block md:hidden"
     >
       <Container>
         <div

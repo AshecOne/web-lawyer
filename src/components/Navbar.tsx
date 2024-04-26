@@ -17,7 +17,7 @@ const Navbar: React.FunctionComponent<INavbarProps> = (props) => {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   return (
-    <section id="navbar" className="flex flex-col w-full">
+    <section id="navbar" className="flex flex-col lg:flex lg:flex-col md:hidden w-full">
       <div className="bg-black text-white py-2">
         <Container>
           <div className="flex justify-between items-center">

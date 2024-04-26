@@ -22,6 +22,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <NavbarWrapper />
         <SpeedInsights />
+        <div className="hidden lg:hidden md:flex md:flex-col md:mx-auto items-center justify-center bg-[#166432]">
+          <p className="text-white font-extrabold text-2xl">
+            This website is only accessible on mobile and desktop devices.
+          </p>
+        </div>
         {children}
         <FooterWrapper />
       </body>

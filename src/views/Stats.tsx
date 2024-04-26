@@ -12,7 +12,7 @@ const Stats: React.FunctionComponent<IStatsProps> = (props) => {
   ];
 
   return (
-    <section id="stats" className="hidden md:flex flex-col w-full">
+    <section id="stats" className="hidden lg:block md:hidden lg:flex-col w-full">
       <div
         className="text-white py-8 px-12"
         style={{

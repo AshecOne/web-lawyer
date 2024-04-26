@@ -67,7 +67,7 @@ const Testimoni: React.FunctionComponent<ITestimoniProps> = () => {
   };
 
   return (
-    <section id="testimoni" className="bg-[#092415] text-white py-12">
+    <section id="testimoni" className="bg-[#092415] block lg:block md:hidden text-white py-12">
       <Container>
         <div className="bg-[#092415]">
           <h2 className="text-2xl text-white font-bold mb-4 border-l-4 border-[#b57630] pl-4">

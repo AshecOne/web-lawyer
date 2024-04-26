@@ -43,7 +43,7 @@ const Services: React.FunctionComponent<IServicesProps> = (props) => {
   }
 
   return (
-    <section id="services" className="bg-[#166432] pt-5">
+    <section id="services" className="bg-[#166432] block lg:block md:hidden pt-5">
       <Container>
         <div className="mb-8 text-center px-4 lg:px-0">
           <h2 className="text-3xl md:text-6xl font-bold mb-2 text-white">
